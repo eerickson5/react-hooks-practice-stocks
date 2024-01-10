@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Stock from "./Stock";
 
-function StockContainer() {
+function StockContainer({stockList}) {
 
-  const [stockList, setStockList] = useState()
-
-  useEffect( () => {
-    fetch("http://localhost:3001/stocks")
-    .then( res => res.json())
-    .then(data => setStockList(data))
-  }, [])
 
   if( !stockList){
     return <h2>Loading...</h2>
