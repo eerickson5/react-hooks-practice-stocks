@@ -17,7 +17,7 @@ function StockContainer() {
   return (
     <div>
       <h2>Stocks</h2>
-      {stockList.map( stockItem => <Stock company={stockItem.name} price={stockItem.price} />)}
+      {stockList.map( stockItem => <Stock company={stockItem.name} price={stockItem.price} key={stockItem.ticker} />)}
     </div>
   );
 }
