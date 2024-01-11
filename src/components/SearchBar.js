@@ -1,12 +1,13 @@
 import React from "react";
 
-function SearchBar({sort, onChangeSort}) {
+function SearchBar({sort, onChangeSort, filter, onChangeFilter}) {
 
 
 
   return (
     <div>
       <strong>Sort by:</strong>
+
       <label>
         <input
           type="radio"
@@ -17,6 +18,7 @@ function SearchBar({sort, onChangeSort}) {
         />
         Alphabetically
       </label>
+      
       <label>
         <input
           type="radio"
@@ -30,7 +32,7 @@ function SearchBar({sort, onChangeSort}) {
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={ (e) => onChangeFilter(e.target.value)} value={filter}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
