@@ -18,7 +18,7 @@ function MainContainer() {
 
   const sortProperly = (stocks) => {
     if(sort === "Alphabetically"){
-      return stocks.sort( (a,b) => a.name.localeCompare(b.name))
+      return stocks.sort( (a,b) => a.ticker.localeCompare(b.ticker))
     } else if(sort === "Price") {
       return stocks.sort( (a,b) => a.price - b.price)
     }
