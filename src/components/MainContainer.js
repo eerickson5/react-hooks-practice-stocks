@@ -7,6 +7,7 @@ function MainContainer() {
 
 
   const [stockList, setStockList] = useState([])
+  const [myStocks, setMyStocks] = useState([])
   const [filter, setFilter] = useState()
   const [sort, setSort] = useState()
 
@@ -25,6 +26,10 @@ function MainContainer() {
     return stocks
   }
 
+  const handleRemoveStock = (ticker) => {
+    setMyStocks(myStocks.filter( stock => stock.ticker !== ticker ))
+  }
+
 
   const filteredStocks = filter ? stockList.filter(stock => stock.type === filter) : stockList
 
@@ -38,7 +43,7 @@ function MainContainer() {
             }/>
         </div>
         <div className="col-4">
-          <PortfolioContainer />
+          <PortfolioContainer stocks={myStocks} onRemoveStock={handleRemoveStock}/>
         </div>
       </div>
     </div>
