@@ -26,8 +26,16 @@ function MainContainer() {
     return stocks
   }
 
-  const handleRemoveStock = (ticker) => {
-    setMyStocks(myStocks.filter( stock => stock.ticker !== ticker ))
+  const handleRemoveStock = (stock) => {
+    console.log("attempting to remove, ", stock)
+    setMyStocks(myStocks.filter( stockOfStocks => stockOfStocks.ticker !== stock.ticker ))
+  }
+
+  const handleAddStock = (stock) => {
+    if(!myStocks.includes(stock)){
+      setMyStocks([...myStocks, stock])
+    }
+    
   }
 
 
@@ -38,9 +46,7 @@ function MainContainer() {
       <SearchBar filter={filter} onChangeFilter={setFilter} sort={sort} onChangeSort={setSort}/>
       <div className="row">
         <div className="col-8">
-          <StockContainer stockList={
-            sortProperly(filteredStocks)
-            }/>
+          <StockContainer stockList={sortProperly(filteredStocks)} onAddStock={handleAddStock}/>
         </div>
         <div className="col-4">
           <PortfolioContainer stocks={myStocks} onRemoveStock={handleRemoveStock}/>

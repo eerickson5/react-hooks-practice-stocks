@@ -6,7 +6,7 @@ function PortfolioContainer({stocks, onRemoveStock}) {
     <div>
       <h2>My Portfolio</h2>
       {
-        stocks.map( stock => <Stock company={stock.company} price={stock.price}/>)
+        stocks.map( stockItem => <Stock stock={stockItem} key={stockItem.ticker} onStockClick={onRemoveStock}/>)
       }
     </div>
   );
